@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>橘子先生的博客</title>
+  <title>橘子先生</title>
   
-  <subtitle>不管怎样，明天又是新的一天</subtitle>
+  <subtitle>我很想记得，我可是我记不得</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dingding15yd.github.io/"/>
-  <updated>2019-02-26T15:30:09.976Z</updated>
+  <updated>2019-11-04T03:31:20.701Z</updated>
   <id>https://dingding15yd.github.io/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>读过的书-2019</title>
+    <link href="https://dingding15yd.github.io/2019/11/04/%E8%AF%BB%E8%BF%87%E7%9A%84%E4%B9%A6-2019/"/>
+    <id>https://dingding15yd.github.io/2019/11/04/读过的书-2019/</id>
+    <published>2019-11-04T03:31:20.000Z</published>
+    <updated>2019-11-04T03:31:20.701Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>我的尝试</title>
