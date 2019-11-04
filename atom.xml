@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dingding15yd.github.io/"/>
-  <updated>2019-11-04T07:39:29.048Z</updated>
+  <updated>2019-11-04T07:45:18.690Z</updated>
   <id>https://dingding15yd.github.io/</id>
   
   <author>
@@ -17,55 +17,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>test3</title>
-    <link href="https://dingding15yd.github.io/2019/11/04/test3/"/>
-    <id>https://dingding15yd.github.io/2019/11/04/test3/</id>
-    <published>2019-11-04T07:39:29.000Z</published>
-    <updated>2019-11-04T07:39:29.048Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>test2</title>
-    <link href="https://dingding15yd.github.io/2019/11/04/test2/"/>
-    <id>https://dingding15yd.github.io/2019/11/04/test2/</id>
-    <published>2019-11-04T07:36:49.000Z</published>
-    <updated>2019-11-04T07:36:49.874Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>test</title>
-    <link href="https://dingding15yd.github.io/2019/11/04/test/"/>
-    <id>https://dingding15yd.github.io/2019/11/04/test/</id>
-    <published>2019-11-04T07:36:07.000Z</published>
-    <updated>2019-11-04T07:36:07.699Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>简单认识markdown语法</title>
     <link href="https://dingding15yd.github.io/2019/11/04/%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86markdown%E8%AF%AD%E6%B3%95/"/>
     <id>https://dingding15yd.github.io/2019/11/04/简单认识markdown语法/</id>
     <published>2019-11-04T06:25:26.000Z</published>
-    <updated>2019-11-04T07:32:19.400Z</updated>
+    <updated>2019-11-04T07:45:18.690Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h1><p><img src="/images/iconfinder_markdown_298823.png" alt></p><p>Markdown是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。</p><p>由约翰 格鲁伯 (john Gruber) 于2004年创建。</p><p>可以导出HTML、Word、图像、PDF、Epub等格式文档。</p><p>文档后缀 .md ，.markdown。</p><h2 id="Markdown-标题"><a href="#Markdown-标题" class="headerlink" title="Markdown 标题"></a>Markdown 标题</h2><h4 id="1、使用-和-标记一级和二级标题"><a href="#1、使用-和-标记一级和二级标题" class="headerlink" title="1、使用 = 和 - 标记一级和二级标题"></a>1、使用 = 和 - 标记一级和二级标题</h4><p>​      = 和 -标记语法格式如下：</p><p>​     <img src="D:\hexo\myblog\source\_posts\简单认识markdown语法\微信截图_20191104144807.png" alt></p><p>   显示效果如下图：</p><p><img src="D:\hexo\myblog\source\_posts\简单认识markdown语法\01986C87-7E19-4497-878E-AE996AFC088E.jpg" alt></p><h4 id="2、使用-号标记"><a href="#2、使用-号标记" class="headerlink" title="2、使用 # 号标记"></a>2、使用 # 号标记</h4><p>​        使用#号可表示 1-6 级标题，一级标题对应一个 # 号，二级标题对应两个 # 号，以此类推。</p><p><img src="D:\hexo\myblog\source\_posts\简单认识markdown语法\微信截图_20191104145328.png" alt></p><p>显示效果如下：</p><p><img src="D:\hexo\myblog\source\_posts\简单认识markdown语法\微信截图_20191104145441.png" alt></p><h1 id="Markdown-段落"><a href="#Markdown-段落" class="headerlink" title="Markdown 段落"></a>Markdown 段落</h1><p>Markdown 段落没有特殊的格式，直接编辑文字就好，段落的换行是使用两个以上空格加上回车</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h1><p><img src="/images/iconfinder_markdown_298823.png" alt></p><p>Markdown是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。</p><p>由约翰 格鲁伯 (john Gruber) 于2004年创建。</p><p>可以导出HTML、Word、图像、PDF、Epub等格式文档。</p><p>文档后缀 .md ，.markdown。</p><h2 id="Markdown-标题"><a href="#Markdown-标题" class="headerlink" title="Markdown 标题"></a>Markdown 标题</h2><h4 id="1、使用-和-标记一级和二级标题"><a href="#1、使用-和-标记一级和二级标题" class="headerlink" title="1、使用 = 和 - 标记一级和二级标题"></a>1、使用 = 和 - 标记一级和二级标题</h4><p>​      = 和 -标记语法格式如下：</p><p>​     <img src="/images/微信截图_20191104144807.png" alt></p><p>   显示效果如下图：</p><p><img src="/images/01986C87-7E19-4497-878E-AE996AFC088E.jpg" alt></p><h4 id="2、使用-号标记"><a href="#2、使用-号标记" class="headerlink" title="2、使用 # 号标记"></a>2、使用 # 号标记</h4><p>​        使用#号可表示 1-6 级标题，一级标题对应一个 # 号，二级标题对应两个 # 号，以此类推。</p><p><img src="/images/微信截图_20191104145328.png" alt></p><p>显示效果如下：</p><p><img src="/images/微信截图_20191104145441.png" alt></p><h1 id="Markdown-段落"><a href="#Markdown-段落" class="headerlink" title="Markdown 段落"></a>Markdown 段落</h1><p>Markdown 段落没有特殊的格式，直接编辑文字就好，段落的换行是使用两个以上空格加上回车</p>]]></content>
     
     <summary type="html">
     
@@ -77,20 +35,6 @@
     
     
       <category term="markdown" scheme="https://dingding15yd.github.io/tags/markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读过的书-2019</title>
-    <link href="https://dingding15yd.github.io/2019/11/04/%E8%AF%BB%E8%BF%87%E7%9A%84%E4%B9%A6-2019/"/>
-    <id>https://dingding15yd.github.io/2019/11/04/读过的书-2019/</id>
-    <published>2019-11-04T03:31:20.000Z</published>
-    <updated>2019-11-04T03:31:20.701Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
     
   </entry>
   
