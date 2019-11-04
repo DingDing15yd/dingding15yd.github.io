@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dingding15yd.github.io/"/>
-  <updated>2019-11-04T03:49:34.002Z</updated>
+  <updated>2019-11-04T06:57:37.257Z</updated>
   <id>https://dingding15yd.github.io/</id>
   
   <author>
@@ -17,18 +17,22 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>插入图片</title>
-    <link href="https://dingding15yd.github.io/2019/11/04/%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/"/>
-    <id>https://dingding15yd.github.io/2019/11/04/插入图片/</id>
-    <published>2019-11-04T03:39:16.000Z</published>
-    <updated>2019-11-04T03:49:34.002Z</updated>
+    <title>简单认识markdown语法</title>
+    <link href="https://dingding15yd.github.io/2019/11/04/%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86markdown%E8%AF%AD%E6%B3%95/"/>
+    <id>https://dingding15yd.github.io/2019/11/04/简单认识markdown语法/</id>
+    <published>2019-11-04T06:25:26.000Z</published>
+    <updated>2019-11-04T06:57:37.257Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h1><p><img src="/.io//hexo\myblog\source\_posts\简单认识markdown语法\iconfinder_markdown_298823.png" alt> </p><p>Markdown是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。</p><p>由约翰 格鲁伯 (john Gruber) 于2004年创建。</p><p>可以导出HTML、Word、图像、PDF、Epub等格式文档。</p><p>文档后缀 .md ，.markdown。</p><h2 id="Markdown-标题"><a href="#Markdown-标题" class="headerlink" title="Markdown 标题"></a>Markdown 标题</h2><h4 id="1、使用-和-标记一级和二级标题"><a href="#1、使用-和-标记一级和二级标题" class="headerlink" title="1、使用 = 和 - 标记一级和二级标题"></a>1、使用 = 和 - 标记一级和二级标题</h4><p>​      = 和 -标记语法格式如下：</p><p>​     <img src="/.io//hexo\myblog\source\_posts\简单认识markdown语法\微信截图_20191104144807.png" alt></p><p>   显示效果如下图：</p><p><img src="/.io//hexo\myblog\source\_posts\简单认识markdown语法\01986C87-7E19-4497-878E-AE996AFC088E.jpg" alt></p><h4 id="2、使用-号标记"><a href="#2、使用-号标记" class="headerlink" title="2、使用 # 号标记"></a>2、使用 # 号标记</h4><p>​        使用#号可表示 1-6 级标题，一级标题对应一个 # 号，二级标题对应两个 # 号，以此类推。</p><p><img src="/.io//hexo\myblog\source\_posts\简单认识markdown语法\微信截图_20191104145328.png" alt></p><p>显示效果如下：</p><p><img src="/.io//hexo\myblog\source\_posts\简单认识markdown语法\微信截图_20191104145441.png" alt></p><h1 id="Markdown-段落"><a href="#Markdown-段落" class="headerlink" title="Markdown 段落"></a>Markdown 段落</h1><p>Markdown 段落没有特殊的格式，直接编辑文字就好，段落的换行是使用两个以上空格加上回车</p>]]></content>
     
     <summary type="html">
     
-      这是描述
+      markdown语法简单介绍
     
     </summary>
     
+    
+      <category term="markdown" scheme="https://dingding15yd.github.io/tags/markdown/"/>
     
   </entry>
   
@@ -65,27 +69,6 @@
     
     
       <category term="java,拦截器" scheme="https://dingding15yd.github.io/tags/java-%E6%8B%A6%E6%88%AA%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://dingding15yd.github.io/2019/02/26/hello-world/"/>
-    <id>https://dingding15yd.github.io/2019/02/26/hello-world/</id>
-    <published>2019-02-26T03:33:39.598Z</published>
-    <updated>2019-02-26T03:33:39.598Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
     
   </entry>
   
