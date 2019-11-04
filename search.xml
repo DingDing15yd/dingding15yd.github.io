@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>插入图片</title>
+    <url>/2019/11/04/%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>读过的书-2019</title>
     <url>/2019/11/04/%E8%AF%BB%E8%BF%87%E7%9A%84%E4%B9%A6-2019/</url>
     <content><![CDATA[]]></content>
@@ -45,6 +50,12 @@
 </ul>
 <p>}<br>}</p>
 ]]></content>
+      <categories>
+        <category>java-初级</category>
+      </categories>
+      <tags>
+        <tag>java,拦截器</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
