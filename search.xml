@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>test</title>
-    <url>/2019/11/05/test/</url>
-    <content><![CDATA[<p><img src="/2019/11/05/test/203414-3e5d297effdff3d6.webp" alt="203414-3e5d297effdff3d6"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>简单认识markdown语法</title>
     <url>/2019/11/04/%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86markdown%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<h1 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h1><p><img src="/images/iconfinder_markdown_298823.png" alt></p>
@@ -16,13 +10,14 @@
 <p>文档后缀 .md ，.markdown。</p>
 <h2 id="Markdown-标题"><a href="#Markdown-标题" class="headerlink" title="Markdown 标题"></a>Markdown 标题</h2><h4 id="1、使用-和-标记一级和二级标题"><a href="#1、使用-和-标记一级和二级标题" class="headerlink" title="1、使用 = 和 - 标记一级和二级标题"></a>1、使用 = 和 - 标记一级和二级标题</h4><p>​      = 和 -标记语法格式如下：</p>
 <p>​     <img src="/images/微信截图_20191104144807.png" alt></p>
-<p>   显示效果如下图：</p>
+<p>​      显示效果如下图：</p>
 <p><img src="/images/01986C87-7E19-4497-878E-AE996AFC088E.jpg" alt></p>
 <h4 id="2、使用-号标记"><a href="#2、使用-号标记" class="headerlink" title="2、使用 # 号标记"></a>2、使用 # 号标记</h4><p>​        使用#号可表示 1-6 级标题，一级标题对应一个 # 号，二级标题对应两个 # 号，以此类推。</p>
 <p><img src="/images/微信截图_20191104145328.png" alt></p>
-<p>显示效果如下：</p>
+<p>​        显示效果如下：</p>
 <p><img src="/images/微信截图_20191104145441.png" alt></p>
-<h1 id="Markdown-段落"><a href="#Markdown-段落" class="headerlink" title="Markdown 段落"></a>Markdown 段落</h1><p>Markdown 段落没有特殊的格式，直接编辑文字就好，段落的换行是使用两个以上空格加上回车</p>
+<h1 id="Markdown-段落"><a href="#Markdown-段落" class="headerlink" title="Markdown 段落"></a>Markdown 段落</h1><p>Markdown 段落没有特殊的格式，直接编辑文字就好，段落的换行是使用两个以上空格加上回车。</p>
+<p><img src="/2019/11/04/简单认识markdown语法/1.png" alt></p>
 ]]></content>
       <categories>
         <category>markdown</category>
