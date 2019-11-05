@@ -34,6 +34,13 @@
 <p><img src="/2019/11/04/简单认识markdown语法/12.png" alt></p>
 <p>​        效果如下：</p>
 <p><img src="/2019/11/04/简单认识markdown语法/13.png" alt></p>
+<h1 id="Markdown-列表"><a href="#Markdown-列表" class="headerlink" title="Markdown 列表"></a>Markdown 列表</h1><h3 id="1-无序列表"><a href="#1-无序列表" class="headerlink" title="1.无序列表"></a>1.无序列表</h3><p>​    使用型号 * 、加号 +、或 减号 - 作为标记。<img src="/2019/11/04/简单认识markdown语法/14.png" alt></p>
+<p>​     效果如下：<img src="/2019/11/04/简单认识markdown语法/15.png" alt></p>
+<h3 id="2-有序列表"><a href="#2-有序列表" class="headerlink" title="2.有序列表"></a>2.有序列表</h3><p>​     用数字加上 . 号表示：<img src="/2019/11/04/简单认识markdown语法/16.png" alt></p>
+<p>​     效果如下：<img src="/2019/11/04/简单认识markdown语法/17.png" alt></p>
+<h3 id="3-列表嵌套："><a href="#3-列表嵌套：" class="headerlink" title="3.列表嵌套："></a>3.列表嵌套：</h3><p>​      列表嵌套只需在子列表中的选项中添加四个空格即可。<img src="/2019/11/04/简单认识markdown语法/18.png" alt></p>
+<p>​     效果如下：</p>
+<p><img src="/2019/11/04/简单认识markdown语法/19.png" alt></p>
 ]]></content>
       <categories>
         <category>markdown</category>
