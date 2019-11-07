@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Javaa开发路线图 - 2019</title>
+    <url>/2019/11/07/Java%E5%BC%80%E5%8F%91%E8%B7%AF%E7%BA%BF%E5%9B%BE-2019/</url>
+    <content><![CDATA[<h3 id="1、Java-8的各项功能"><a href="#1、Java-8的各项功能" class="headerlink" title="1、Java 8的各项功能"></a>1、Java 8的各项功能</h3><p>   Java程序员应该学习并掌握的下一个重要API是Java 8的各项功能。可以毫不夸张地说，这些功能彻底改变了如今Java的编程方式。 </p>
+<p>   因此，作为一名Java开发人员，您不应该错过了解与使用<a href="http://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&amp;mid=2247490334&amp;idx=1&amp;sn=45e3daa153a744ada788d2f4de199192&amp;chksm=eb539e28dc24173e66d7fc010ac5c7d4fc6e69cbcc722ecc07df25b3344d63852c0e367f3904&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">Lambda</a>表达式、Stream API、<a href="http://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&amp;mid=2247484481&amp;idx=1&amp;sn=b4a0586ce8c9a798d26a3eb6273ffa5d&amp;chksm=eb538177dc2408613493aa78273683c007427be4b217b41dc8d8b5e36435c398ce937f1af799&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">Optional</a>类、以及全新Date and Time API的机会。 </p>
+<p>  Java 8已经发布5年多了，如今大多数库都已停止了支持低于Java 8的版本。因此如果您想顺利地实现Java应用程序的编写与调试的话，请赶快抓紧时间学习Java 8的各项新功能。</p>
+<p>关注微信公众号：Java技术栈，在后台回复：Java，可以获取我整理的 N 篇最新 Java 8－12 新特性教程，都是干货。</p>
+<p><img src="/2019/11/07/Java开发路线图-2019/1.png" alt></p>
+<h3 id="2、测试"><a href="#2、测试" class="headerlink" title="2、测试"></a>2、测试</h3><p>   测试，尤其是单元测试、集成测试和自动化测试，是任何Java开发人员必修的一项基本技能。其中，JUnit和Mockito是两种被Java开发人员最为熟悉、且欢迎的单元测试和模拟库。</p>
+<p>   当然，您也可以去学习一下更高级的程序库，例如：用于业务驱动测试的Cucumber，用于集成测试的Robot Framework，以及您肯定“绕不开”的JUnit。 </p>
+<p>   在常见的PowerMock、Mockito和EasyMock三种模拟库中，我强烈建议您学习Mockito。由于目前有许多Java开发人员和公司都在使用它，因此它已逐渐成为了在Java中创建模拟对象的标准库。 </p>
+<h3 id="3、实用程序库"><a href="#3、实用程序库" class="headerlink" title="3、实用程序库"></a>3、实用程序库</h3><p>   一直以来，Java都拥有着丰富的开源程序库，它们可以帮助开发人员实现从日志记录到机器学习，从发送HTTP请求到解析JSON等，几乎所有的工作。 </p>
+<p>   值得一提的是：Apache Commons和Google Guava这两个实用程序库，它们是Java JDK库的有效补充。 </p>
+]]></content>
+      <categories>
+        <category>待学习</category>
+      </categories>
+  </entry>
+  <entry>
     <title>spring boot - 1</title>
     <url>/2019/11/05/spring-boot-1/</url>
     <content><![CDATA[<p><img src="/2019/11/05/spring-boot-1/1.png" alt></p>
