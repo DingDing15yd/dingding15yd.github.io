@@ -19,10 +19,9 @@
       </categories>
   </entry>
   <entry>
-    <title></title>
+    <title>spring boot - 1</title>
     <url>/2019/11/05/spring-boot-1/</url>
-    <content><![CDATA[<p>title: spring boot - 1<br>date: 2019-11-05 18:54:52<br>category: spring boot<br>tags: spring boot<br>description: 什么是spring boot？ 启动方式、主类及目录结构、starter启动器、核心配置</p>
-<p><img src="/2019/11/05/spring-boot-1/1.png" alt></p>
+    <content><![CDATA[<p><img src="/2019/11/05/spring-boot-1/1.png" alt></p>
 <h3 id="Spring-Boot-的背景"><a href="#Spring-Boot-的背景" class="headerlink" title="Spring  Boot 的背景"></a>Spring  Boot 的背景</h3><p>  得益于Spring框架的流行，它的两把利器：IOC 和 AOP，IOC帮助我们管理对象的依赖关系，极大减少对象的耦合性，而AOP的切面编程可以方便使用动态代理来实现各种动态方法功能（如事务、缓存、日志等）。</p>
 <p>  而要集成Spring框架，必须要用到XML配置文件，或者注解式的 Java 代码配置。无论使用XML或者代码配置方式，都需要对相关组件的配置有足够的了解，然后在编写大量冗长的配置代码。</p>
 <h1 id="什么是Spring-Boot？"><a href="#什么是Spring-Boot？" class="headerlink" title="什么是Spring  Boot？"></a>什么是Spring  Boot？</h1><p>​    Spring boot是spring开源组织的子项目，是Srping组件一站式解决方案，简化了Spring的难度，简省了繁重的配置，提供了各种启动器，开发者能快速上手。</p>
@@ -98,7 +97,14 @@
 <p>   可以定义如下配置类来接收这些属性 <img src="/2019/11/05/spring-boot-1/21.png" alt></p>
 <p>   @EnableConfigurationProperties注解表示对 @ConfigurationProperties的内嵌支持，默认会将对应Properties Class作为bean注入的IOC容器中，即在相应的Properties类上不用加 @Component注解。 </p>
 <p>   《<a href="http://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&amp;mid=2247486895&amp;idx=2&amp;sn=1d49a0de72f9dee2c434ae905d5bc2e4&amp;chksm=eb538899dc24018ffb0e618abfe7e2223da20e5b8a2d5be36267769779a82701699cd5476748&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">Spring Boot 配置加载顺序详解</a>》了解一下。 </p>
+<h3 id="三、削铁如泥：SpringFactoriesLoader详解"><a href="#三、削铁如泥：SpringFactoriesLoader详解" class="headerlink" title="三、削铁如泥：SpringFactoriesLoader详解"></a>三、削铁如泥：SpringFactoriesLoader详解</h3><p>  JVM提供了3种类加载器：BootstrapClassLoader、ExtClassLoader、AppClassLoader分别加载 Java核心类库、扩展类库以及应用的类路径(CLASSPATH)下的类库。JVM通过双亲委派模型进行类的加载，我们也可以通过继承 java.lang.classloader实现自己的类加载器。</p>
 ]]></content>
+      <categories>
+        <category>spring boot</category>
+      </categories>
+      <tags>
+        <tag>spring boot</tag>
+      </tags>
   </entry>
   <entry>
     <title>简单认识markdown语法</title>
