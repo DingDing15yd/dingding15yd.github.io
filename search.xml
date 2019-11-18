@@ -19,9 +19,10 @@
       </categories>
   </entry>
   <entry>
-    <title>spring boot - 1</title>
+    <title></title>
     <url>/2019/11/05/spring-boot-1/</url>
-    <content><![CDATA[<p><img src="/2019/11/05/spring-boot-1/1.png" alt></p>
+    <content><![CDATA[<p>title: spring boot - 1<br>date: 2019-11-05 18:54:52<br>category: spring boot<br>tags: spring boot<br>description: 什么是spring boot？ 启动方式、主类及目录结构、starter启动器、核心配置</p>
+<p><img src="/2019/11/05/spring-boot-1/1.png" alt></p>
 <h3 id="Spring-Boot-的背景"><a href="#Spring-Boot-的背景" class="headerlink" title="Spring  Boot 的背景"></a>Spring  Boot 的背景</h3><p>  得益于Spring框架的流行，它的两把利器：IOC 和 AOP，IOC帮助我们管理对象的依赖关系，极大减少对象的耦合性，而AOP的切面编程可以方便使用动态代理来实现各种动态方法功能（如事务、缓存、日志等）。</p>
 <p>  而要集成Spring框架，必须要用到XML配置文件，或者注解式的 Java 代码配置。无论使用XML或者代码配置方式，都需要对相关组件的配置有足够的了解，然后在编写大量冗长的配置代码。</p>
 <h1 id="什么是Spring-Boot？"><a href="#什么是Spring-Boot？" class="headerlink" title="什么是Spring  Boot？"></a>什么是Spring  Boot？</h1><p>​    Spring boot是spring开源组织的子项目，是Srping组件一站式解决方案，简化了Spring的难度，简省了繁重的配置，提供了各种启动器，开发者能快速上手。</p>
@@ -104,15 +105,11 @@
 <p>  线程上下文类加载器（ContextClassLoader）正好解决了这个问题。从名称上来看，可能会误解为它是一种新的类加载器，实际上，它仅仅是Thread类的一个变量而已，可以通过setContextClassLoader（ClassLoader）和 getContextClassLoader（）来设置和获取该对象。如果不做任何的设置，Java应用的线程的上下文类加载器就是AppClassLoader。在核心类库使用SPI接口时，传递的类加载器使用线程上下文类加载器，就可以成功的加载到SPI实现的类。线程上下文类加载器在很多SPI的实现中都会用到。但在JDBC中，你可能会看到一种更直接的实现方式，比如，JDBC驱动管理java.sql.Driver中的loadInitialDrivers()方法中，你可以直接看到JDK是如何加载驱动的：</p>
 <p>  <img src="/2019/11/05/spring-boot-1/24.png" alt></p>
 <p>  其实讲解线程上下文类加载器，最主要的是在看到 Thread.currentThread().getClassLoader() 和 Thread.currentThread().getContextClassLoader() 时不会一脸懵逼，这两者除了在许多底层框架中取得的ClassLoader可能会有所不同外，其他大多数业务场景下都是一样的，大家只要知道它是为了解决什么问题存在的即可。</p>
-<p>  <font color="gree">类加载器除了加载class外，还有一个非常重要的功能，就是加载资源，它可以从jar包中读取任何资源</font>，比如，ClassLoader.getResource(String name) 就是用于读取jar包中的资源文件，其代码如下：<img src="/2019/11/05/spring-boot-1/25.png" alt></p>
-<p>  它的逻辑其实和类加载的逻辑是一样的，首先判断父类加载器是否为空，不为空则委托父类加载器执行资源查找任务，直到BootStrapClassLoader，最后才轮到自己查找。</p>
+  <font color="gree">类加载器除了加载class外，还有一个非常重要的功能，就是加载资源，它可以从jar包中读取任何资源</font>，比如，ClassLoader.getResource(String name) 就是用于读取jar包中的资源文件，其代码如下：<img src="/2019/11/05/spring-boot-1/25.png" alt><br><br>  它的逻辑其实和类加载的逻辑是一样的，首先判断父类加载器是否为空，不为空则委托父类加载器执行资源查找任务，直到BootStrapClassLoader，最后才轮到自己查找。<font color="skyblue">而不同的类加载器负责扫描不同路径下的jar包，就如同加载class一样，最后会扫描所有的jar包，找到符合条件的资源文件。</font>
+
+<p>  类加载器的 findResource(name) 会遍历其负责加载的所有jar包，找到jar包中名称为name的资源文件，这里的资源可以是任何资源，甚至是.class文件，比如下面的示例，用于查找 Array.class 文件：<img src="/2019/11/05/spring-boot-1/26.png" alt></p>
+<p>  运行后得到如下结果：<img src="/2019/11/05/spring-boot-1/27.png" alt></p>
 ]]></content>
-      <categories>
-        <category>spring boot</category>
-      </categories>
-      <tags>
-        <tag>spring boot</tag>
-      </tags>
   </entry>
   <entry>
     <title>简单认识markdown语法</title>
