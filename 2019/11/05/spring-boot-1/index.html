@@ -110,7 +110,11 @@
 <meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/19.png">
 <meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/20.png">
 <meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/21.png">
-<meta property="og:updated_time" content="2019-11-08T01:16:26.160Z">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/22.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/23.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/24.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/25.png">
+<meta property="og:updated_time" content="2019-11-18T07:22:35.877Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring boot - 1">
 <meta name="twitter:description" content="什么是spring boot？ 启动方式、主类及目录结构、starter启动器、核心配置">
@@ -407,7 +411,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.1k
+                  5k
                 </span>
               
 
@@ -423,7 +427,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  14
+                  17
                 </span>
               
             </div>
@@ -525,6 +529,14 @@
 <p>   @EnableConfigurationProperties注解表示对 @ConfigurationProperties的内嵌支持，默认会将对应Properties Class作为bean注入的IOC容器中，即在相应的Properties类上不用加 @Component注解。 </p>
 <p>   《<a href="http://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&amp;mid=2247486895&amp;idx=2&amp;sn=1d49a0de72f9dee2c434ae905d5bc2e4&amp;chksm=eb538899dc24018ffb0e618abfe7e2223da20e5b8a2d5be36267769779a82701699cd5476748&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">Spring Boot 配置加载顺序详解</a>》了解一下。 </p>
 <h3 id="三、削铁如泥：SpringFactoriesLoader详解"><a href="#三、削铁如泥：SpringFactoriesLoader详解" class="headerlink" title="三、削铁如泥：SpringFactoriesLoader详解"></a>三、削铁如泥：SpringFactoriesLoader详解</h3><p>  JVM提供了3种类加载器：BootstrapClassLoader、ExtClassLoader、AppClassLoader分别加载 Java核心类库、扩展类库以及应用的类路径(CLASSPATH)下的类库。JVM通过双亲委派模型进行类的加载，我们也可以通过继承 java.lang.classloader实现自己的类加载器。</p>
+<p>  何为双亲委派模型？当一个类加载器收到类加载任务时，会先交给自己的父加载器去完成，因此最终加载任务都会传递到最顶层的BootstrapClassLoader，只有当父加载器无法完成加载任务时，才会尝试自己来加载。<img src="/2019/11/05/spring-boot-1/22.png" alt></p>
+<p>  采用双亲委派模型的一个好处是保证不同类加载器最终得到的都是一个对象，这样就可以保证 Java 核心库的类型安全，比如，加载位于rt.jar包中的java.lang.Object类，不管是哪个加载器加载这个类，最终都是委托给顶层的BootStrapClassLoader来加载的，这样就可以保证任何的类加载器最终得到的都是同样一个Object对象。查看ClassLoader的源码，对双亲委派模型会更有直观的认识：<img src="/2019/11/05/spring-boot-1/23.png" alt></p>
+<p>  但双亲委派模型并不能解决所有的类加载器问题，比如，Java提供了很多服务提供者接口（ServiceProviderProviderInterface，SPI），允许第三方为这些接口提供实现。常见的SPI有JDBC、JNDI、JAXP等，这些SPI的接口有核心类库提供，却由第三方实现，这样就存在一个问题：SPI的接口是Java核心库的一部分，是由BootStrapClassLoader来加载的。BootStrapClassLoader是无法找到SPI的实现类的，因为它只加载Java的核心库，他也不能代理给AppClassLoader，因为它是最顶层的类加载器。也就是说，双亲委派模型并不能解决这个问题。</p>
+<p>  线程上下文类加载器（ContextClassLoader）正好解决了这个问题。从名称上来看，可能会误解为它是一种新的类加载器，实际上，它仅仅是Thread类的一个变量而已，可以通过setContextClassLoader（ClassLoader）和 getContextClassLoader（）来设置和获取该对象。如果不做任何的设置，Java应用的线程的上下文类加载器就是AppClassLoader。在核心类库使用SPI接口时，传递的类加载器使用线程上下文类加载器，就可以成功的加载到SPI实现的类。线程上下文类加载器在很多SPI的实现中都会用到。但在JDBC中，你可能会看到一种更直接的实现方式，比如，JDBC驱动管理java.sql.Driver中的loadInitialDrivers()方法中，你可以直接看到JDK是如何加载驱动的：</p>
+<p>  <img src="/2019/11/05/spring-boot-1/24.png" alt></p>
+<p>  其实讲解线程上下文类加载器，最主要的是在看到 Thread.currentThread().getClassLoader() 和 Thread.currentThread().getContextClassLoader() 时不会一脸懵逼，这两者除了在许多底层框架中取得的ClassLoader可能会有所不同外，其他大多数业务场景下都是一样的，大家只要知道它是为了解决什么问题存在的即可。</p>
+<p>  <font color="gree">类加载器除了加载class外，还有一个非常重要的功能，就是加载资源，它可以从jar包中读取任何资源</font>，比如，ClassLoader.getResource(String name) 就是用于读取jar包中的资源文件，其代码如下：<img src="/2019/11/05/spring-boot-1/25.png" alt></p>
+<p>  它的逻辑其实和类加载的逻辑是一样的，首先判断父类加载器是否为空，不为空则委托父类加载器执行资源查找任务，直到BootStrapClassLoader，最后才轮到自己查找。</p>
 
       
     </div>
