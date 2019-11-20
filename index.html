@@ -284,6 +284,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dingding15yd.github.io/2019/11/20/代码这样写规范-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dingding">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.loli.net/2019/02/26/5c751acb328b9.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="橘子先生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/20/代码这样写规范-1/" itemprop="url">代码这样写规范 - 1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-20T15:56:08+08:00">
+                2019-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java-基础/" itemprop="url" rel="index">
+                    <span itemprop="name">java-基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/11/20/代码这样写规范-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/20/代码这样写规范-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  787
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          集合遍历、判空、字符串拼接、工具类实例化问题、枚举等方面规范代码。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/20/代码这样写规范-1/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://dingding15yd.github.io/2019/11/07/Java开发路线图-2019/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -544,7 +731,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5.1k
+                  5.9k
                 </span>
               
 
@@ -560,7 +747,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  18
+                  20
                 </span>
               
             </div>
@@ -667,10 +854,19 @@
 <p>  线程上下文类加载器（ContextClassLoader）正好解决了这个问题。从名称上来看，可能会误解为它是一种新的类加载器，实际上，它仅仅是Thread类的一个变量而已，可以通过setContextClassLoader（ClassLoader）和 getContextClassLoader（）来设置和获取该对象。如果不做任何的设置，Java应用的线程的上下文类加载器就是AppClassLoader。在核心类库使用SPI接口时，传递的类加载器使用线程上下文类加载器，就可以成功的加载到SPI实现的类。线程上下文类加载器在很多SPI的实现中都会用到。但在JDBC中，你可能会看到一种更直接的实现方式，比如，JDBC驱动管理java.sql.Driver中的loadInitialDrivers()方法中，你可以直接看到JDK是如何加载驱动的：</p>
 <p>  <img src="/2019/11/05/spring-boot-1/24.png" alt></p>
 <p>  其实讲解线程上下文类加载器，最主要的是在看到 Thread.currentThread().getClassLoader() 和 Thread.currentThread().getContextClassLoader() 时不会一脸懵逼，这两者除了在许多底层框架中取得的ClassLoader可能会有所不同外，其他大多数业务场景下都是一样的，大家只要知道它是为了解决什么问题存在的即可。</p>
-  <font color="gree">类加载器除了加载class外，还有一个非常重要的功能，就是加载资源，它可以从jar包中读取任何资源</font>，比如，ClassLoader.getResource(String name) 就是用于读取jar包中的资源文件，其代码如下：<img src="/2019/11/05/spring-boot-1/25.png" alt><br><br>  它的逻辑其实和类加载的逻辑是一样的，首先判断父类加载器是否为空，不为空则委托父类加载器执行资源查找任务，直到BootStrapClassLoader，最后才轮到自己查找。<font color="skyblue">而不同的类加载器负责扫描不同路径下的jar包，就如同加载class一样，最后会扫描所有的jar包，找到符合条件的资源文件。</font>
+  <font color="gree">类加载器除了加载class外，还有一个非常重要的功能，就是加载资源，它可以从jar包中读取任何资源</font>，比如，ClassLoader.getResource(String name) 就是用于读取jar包中的资源文件，其代码如下：<img src="/2019/11/05/spring-boot-1/25.png" alt><br><br>  它的逻辑其实和类加载的逻辑是一样的，首先判断父类加载器是否为空，不为空则委托父类加载器执行资源查找任务，直到BootStrapClassLoader，最后才轮到自己查找。<font color="gree">而不同的类加载器负责扫描不同路径下的jar包，就如同加载class一样，最后会扫描所有的jar包，找到符合条件的资源文件。</font>
 
 <p>  类加载器的 findResource(name) 会遍历其负责加载的所有jar包，找到jar包中名称为name的资源文件，这里的资源可以是任何资源，甚至是.class文件，比如下面的示例，用于查找 Array.class 文件：<img src="/2019/11/05/spring-boot-1/26.png" alt></p>
 <p>  运行后得到如下结果：<img src="/2019/11/05/spring-boot-1/27.png" alt></p>
+<p>  这时候再回到我们开头要解析的 SpringFactoriesLoader，你会奇怪上面讲了一堆 ClassLoader 是几个意思？看下它的源码你就知道了：<img src="/2019/11/05/spring-boot-1/28.png" alt></p>
+<p>  有了前面关于ClassLoader的知识，再来理解这段代码，是不是感觉豁然开朗，从 ClassPath 下的每个jar包中搜寻所有 META-INF/spring.factories 配置文件，然后解析 properties 文件，找到指定名称的配置后返回。需要注意的是，其实这里不仅仅会去 ClassPath 路径下查找，会扫描所有路径下的 Jar 包，只不过这个文件只会在 ClassPath 下的jar包。来简单看下 spring.factories 文件的内容吧：<img src="/2019/11/05/spring-boot-1/29.png" alt></p>
+<p>  执行 loadFactoryNames(EnableAutoConfiguration.class，classLoader)后，得到对应的一组 @Configuration类，我们就可以通过反射实例化这些类然后注入到IOC容器中，最后容器里就有了一系列标注了 @Configuration 的javaConfig形式的配置类。</p>
+<p>  这就是 SpringFactoriesLoader，它本质上属于Spring 框架私有的一种扩展方案，类似SPI，Spring Boot在Spring基础上的很多核心功能都是基于此，希望大家可以理解。</p>
+<h3 id="四、另一件武器：Spring容器的事件监听机制"><a href="#四、另一件武器：Spring容器的事件监听机制" class="headerlink" title="四、另一件武器：Spring容器的事件监听机制"></a>四、另一件武器：Spring容器的事件监听机制</h3><p>  过去，事件监听机制多用于图形界面编程，比如：点击按钮、在文本框输入内容等操作被称为事件，而当事件触发时，应用程序做出一定的响应则表示应用监听了这个事件，<font color="gree">而在服务器端，事件的监听机制更多的用于异步通知以及监控和异常处理。</font>Java提供了实现事件监听机制的两个基础类：自定义事件类型扩展自 java.util.EventObject、事件的监听器扩展自 java.util.EventListener。来看一个简单的实例：简单的监控一个方法的耗时。</p>
+<p>  首先定义事件类型，通常的做法是扩展EventObject，随着事件的发生，相应的状态通常都封装在此类中：<img src="/2019/11/05/spring-boot-1/30.png" alt></p>
+<p>  事件发布之后，相应的监听器即可对该类型的事件进行处理，我们可以在方法开始执行之前发布一个 begin 事件，在方法执行结束之后发布一个end事件，相应地，事件监听器需要提供方法会对这两种情况下接收到的事件进行处理：</p>
+<p><img src="/2019/11/05/spring-boot-1/31.png" alt></p>
+<p>  事件监听器接口针对不同的事件发布实际提供相应的处理方法定义，最重要的是，其方法只接收MthodMonitorEvent 参数，说明这个监听器类只负责监听器对应的事件并进行处理。有了事件和监听器，剩下的就是发布事件，然后让相应的监听器监听并处理。通常情况，我们会有一个事件发布者，它本身作为事件源，在合适的时机，将相应的事件发布给对应的事件监听器：<img src="/2019/11/05/spring-boot-1/32.png" alt></p>
 
           
         
@@ -856,193 +1052,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/11/04/简单认识markdown语法/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dingding15yd.github.io/2019/02/26/我的尝试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dingding">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://i.loli.net/2019/02/26/5c751acb328b9.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="橘子先生">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/26/我的尝试/" itemprop="url">我的尝试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-26T12:26:25+08:00">
-                2019-02-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java-基础/" itemprop="url" rel="index">
-                    <span itemprop="name">java-基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/26/我的尝试/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/我的尝试/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          这是简介
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/26/我的尝试/">
               阅读全文 &raquo;
             </a>
           </div>

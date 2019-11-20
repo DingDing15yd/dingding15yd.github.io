@@ -116,7 +116,12 @@
 <meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/25.png">
 <meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/26.png">
 <meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/27.png">
-<meta property="og:updated_time" content="2019-11-18T07:30:28.588Z">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/28.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/29.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/30.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/31.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/32.png">
+<meta property="og:updated_time" content="2019-11-18T09:07:43.438Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="橘子先生">
 <meta name="twitter:description" content="title: spring boot - 1date: 2019-11-05 18:54:52category: spring boottags: spring bootdescription: 什么是spring boot？ 启动方式、主类及目录结构、starter启动器、核心配置  Spring  Boot 的背景  得益于Spring框架的流行，它的两把利器：IOC 和 AOP，IOC帮助我">
@@ -391,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5.1k
+                  5.9k
                 </span>
               
 
@@ -407,7 +412,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  18
+                  20
                 </span>
               
             </div>
@@ -512,10 +517,19 @@
 <p>  线程上下文类加载器（ContextClassLoader）正好解决了这个问题。从名称上来看，可能会误解为它是一种新的类加载器，实际上，它仅仅是Thread类的一个变量而已，可以通过setContextClassLoader（ClassLoader）和 getContextClassLoader（）来设置和获取该对象。如果不做任何的设置，Java应用的线程的上下文类加载器就是AppClassLoader。在核心类库使用SPI接口时，传递的类加载器使用线程上下文类加载器，就可以成功的加载到SPI实现的类。线程上下文类加载器在很多SPI的实现中都会用到。但在JDBC中，你可能会看到一种更直接的实现方式，比如，JDBC驱动管理java.sql.Driver中的loadInitialDrivers()方法中，你可以直接看到JDK是如何加载驱动的：</p>
 <p>  <img src="/2019/11/05/spring-boot-1/24.png" alt></p>
 <p>  其实讲解线程上下文类加载器，最主要的是在看到 Thread.currentThread().getClassLoader() 和 Thread.currentThread().getContextClassLoader() 时不会一脸懵逼，这两者除了在许多底层框架中取得的ClassLoader可能会有所不同外，其他大多数业务场景下都是一样的，大家只要知道它是为了解决什么问题存在的即可。</p>
-  <font color="gree">类加载器除了加载class外，还有一个非常重要的功能，就是加载资源，它可以从jar包中读取任何资源</font>，比如，ClassLoader.getResource(String name) 就是用于读取jar包中的资源文件，其代码如下：<img src="/2019/11/05/spring-boot-1/25.png" alt><br><br>  它的逻辑其实和类加载的逻辑是一样的，首先判断父类加载器是否为空，不为空则委托父类加载器执行资源查找任务，直到BootStrapClassLoader，最后才轮到自己查找。<font color="skyblue">而不同的类加载器负责扫描不同路径下的jar包，就如同加载class一样，最后会扫描所有的jar包，找到符合条件的资源文件。</font>
+  <font color="gree">类加载器除了加载class外，还有一个非常重要的功能，就是加载资源，它可以从jar包中读取任何资源</font>，比如，ClassLoader.getResource(String name) 就是用于读取jar包中的资源文件，其代码如下：<img src="/2019/11/05/spring-boot-1/25.png" alt><br><br>  它的逻辑其实和类加载的逻辑是一样的，首先判断父类加载器是否为空，不为空则委托父类加载器执行资源查找任务，直到BootStrapClassLoader，最后才轮到自己查找。<font color="gree">而不同的类加载器负责扫描不同路径下的jar包，就如同加载class一样，最后会扫描所有的jar包，找到符合条件的资源文件。</font>
 
 <p>  类加载器的 findResource(name) 会遍历其负责加载的所有jar包，找到jar包中名称为name的资源文件，这里的资源可以是任何资源，甚至是.class文件，比如下面的示例，用于查找 Array.class 文件：<img src="/2019/11/05/spring-boot-1/26.png" alt></p>
 <p>  运行后得到如下结果：<img src="/2019/11/05/spring-boot-1/27.png" alt></p>
+<p>  这时候再回到我们开头要解析的 SpringFactoriesLoader，你会奇怪上面讲了一堆 ClassLoader 是几个意思？看下它的源码你就知道了：<img src="/2019/11/05/spring-boot-1/28.png" alt></p>
+<p>  有了前面关于ClassLoader的知识，再来理解这段代码，是不是感觉豁然开朗，从 ClassPath 下的每个jar包中搜寻所有 META-INF/spring.factories 配置文件，然后解析 properties 文件，找到指定名称的配置后返回。需要注意的是，其实这里不仅仅会去 ClassPath 路径下查找，会扫描所有路径下的 Jar 包，只不过这个文件只会在 ClassPath 下的jar包。来简单看下 spring.factories 文件的内容吧：<img src="/2019/11/05/spring-boot-1/29.png" alt></p>
+<p>  执行 loadFactoryNames(EnableAutoConfiguration.class，classLoader)后，得到对应的一组 @Configuration类，我们就可以通过反射实例化这些类然后注入到IOC容器中，最后容器里就有了一系列标注了 @Configuration 的javaConfig形式的配置类。</p>
+<p>  这就是 SpringFactoriesLoader，它本质上属于Spring 框架私有的一种扩展方案，类似SPI，Spring Boot在Spring基础上的很多核心功能都是基于此，希望大家可以理解。</p>
+<h3 id="四、另一件武器：Spring容器的事件监听机制"><a href="#四、另一件武器：Spring容器的事件监听机制" class="headerlink" title="四、另一件武器：Spring容器的事件监听机制"></a>四、另一件武器：Spring容器的事件监听机制</h3><p>  过去，事件监听机制多用于图形界面编程，比如：点击按钮、在文本框输入内容等操作被称为事件，而当事件触发时，应用程序做出一定的响应则表示应用监听了这个事件，<font color="gree">而在服务器端，事件的监听机制更多的用于异步通知以及监控和异常处理。</font>Java提供了实现事件监听机制的两个基础类：自定义事件类型扩展自 java.util.EventObject、事件的监听器扩展自 java.util.EventListener。来看一个简单的实例：简单的监控一个方法的耗时。</p>
+<p>  首先定义事件类型，通常的做法是扩展EventObject，随着事件的发生，相应的状态通常都封装在此类中：<img src="/2019/11/05/spring-boot-1/30.png" alt></p>
+<p>  事件发布之后，相应的监听器即可对该类型的事件进行处理，我们可以在方法开始执行之前发布一个 begin 事件，在方法执行结束之后发布一个end事件，相应地，事件监听器需要提供方法会对这两种情况下接收到的事件进行处理：</p>
+<p><img src="/2019/11/05/spring-boot-1/31.png" alt></p>
+<p>  事件监听器接口针对不同的事件发布实际提供相应的处理方法定义，最重要的是，其方法只接收MthodMonitorEvent 参数，说明这个监听器类只负责监听器对应的事件并进行处理。有了事件和监听器，剩下的就是发布事件，然后让相应的监听器监听并处理。通常情况，我们会有一个事件发布者，它本身作为事件源，在合适的时机，将相应的事件发布给对应的事件监听器：<img src="/2019/11/05/spring-boot-1/32.png" alt></p>
 
       
     </div>
@@ -738,7 +752,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot-的背景"><span class="nav-number">1.</span> <span class="nav-text">Spring  Boot 的背景</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Spring-Boot？"><span class="nav-number"></span> <span class="nav-text">什么是Spring  Boot？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot的优点"><span class="nav-number">1.</span> <span class="nav-text">Spring  Boot的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot的缺点"><span class="nav-number">2.</span> <span class="nav-text">Spring Boot的缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Boot的四大核心特性"><span class="nav-number"></span> <span class="nav-text">Spring  Boot的四大核心特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、抛砖引玉：Spring-IOC容器"><span class="nav-number">1.</span> <span class="nav-text">一、抛砖引玉：Spring IOC容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1、Spring-IOC容器"><span class="nav-number">2.</span> <span class="nav-text">1.1、Spring IOC容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2、Spring容器扩展机制"><span class="nav-number">3.</span> <span class="nav-text">1.2、Spring容器扩展机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、夯实基础：JavaConfig与常见Annotation"><span class="nav-number">4.</span> <span class="nav-text">二、夯实基础：JavaConfig与常见Annotation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1、javaconfig"><span class="nav-number">4.1.</span> <span class="nav-text">2.1、javaconfig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、-ComponentScan"><span class="nav-number">4.2.</span> <span class="nav-text">2.2、@ComponentScan</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3、-Import"><span class="nav-number">4.3.</span> <span class="nav-text">2.3、@Import</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4、-Conditional"><span class="nav-number">4.4.</span> <span class="nav-text">2.4、@Conditional</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、削铁如泥：SpringFactoriesLoader详解"><span class="nav-number">5.</span> <span class="nav-text">三、削铁如泥：SpringFactoriesLoader详解</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot-的背景"><span class="nav-number">1.</span> <span class="nav-text">Spring  Boot 的背景</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Spring-Boot？"><span class="nav-number"></span> <span class="nav-text">什么是Spring  Boot？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot的优点"><span class="nav-number">1.</span> <span class="nav-text">Spring  Boot的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot的缺点"><span class="nav-number">2.</span> <span class="nav-text">Spring Boot的缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Boot的四大核心特性"><span class="nav-number"></span> <span class="nav-text">Spring  Boot的四大核心特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、抛砖引玉：Spring-IOC容器"><span class="nav-number">1.</span> <span class="nav-text">一、抛砖引玉：Spring IOC容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1、Spring-IOC容器"><span class="nav-number">2.</span> <span class="nav-text">1.1、Spring IOC容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2、Spring容器扩展机制"><span class="nav-number">3.</span> <span class="nav-text">1.2、Spring容器扩展机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、夯实基础：JavaConfig与常见Annotation"><span class="nav-number">4.</span> <span class="nav-text">二、夯实基础：JavaConfig与常见Annotation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1、javaconfig"><span class="nav-number">4.1.</span> <span class="nav-text">2.1、javaconfig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、-ComponentScan"><span class="nav-number">4.2.</span> <span class="nav-text">2.2、@ComponentScan</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3、-Import"><span class="nav-number">4.3.</span> <span class="nav-text">2.3、@Import</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4、-Conditional"><span class="nav-number">4.4.</span> <span class="nav-text">2.4、@Conditional</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、削铁如泥：SpringFactoriesLoader详解"><span class="nav-number">5.</span> <span class="nav-text">三、削铁如泥：SpringFactoriesLoader详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、另一件武器：Spring容器的事件监听机制"><span class="nav-number">6.</span> <span class="nav-text">四、另一件武器：Spring容器的事件监听机制</span></a></li></ol></li></div>
             
 
           </div>
