@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="spring boot,">
 
 
 
@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="title: spring boot - 1date: 2019-11-05 18:54:52category: spring boottags: spring bootdescription: 什么是spring boot？ 启动方式、主类及目录结构、starter启动器、核心配置  Spring  Boot 的背景  得益于Spring框架的流行，它的两把利器：IOC 和 AOP，IOC帮助我">
-<meta name="keywords" content="俗人一个">
+<meta name="description" content="什么是spring boot？ 启动方式、主类及目录结构、starter启动器、核心配置">
+<meta name="keywords" content="spring boot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="橘子先生">
+<meta property="og:title" content="spring boot - 1">
 <meta property="og:url" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/index.html">
 <meta property="og:site_name" content="橘子先生">
-<meta property="og:description" content="title: spring boot - 1date: 2019-11-05 18:54:52category: spring boottags: spring bootdescription: 什么是spring boot？ 启动方式、主类及目录结构、starter启动器、核心配置  Spring  Boot 的背景  得益于Spring框架的流行，它的两把利器：IOC 和 AOP，IOC帮助我">
+<meta property="og:description" content="什么是spring boot？ 启动方式、主类及目录结构、starter启动器、核心配置">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/1.png">
 <meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/2.png">
@@ -121,10 +121,10 @@
 <meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/30.png">
 <meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/31.png">
 <meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/32.png">
-<meta property="og:updated_time" content="2019-11-18T09:07:43.438Z">
+<meta property="og:updated_time" content="2019-11-21T02:45:16.578Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="橘子先生">
-<meta name="twitter:description" content="title: spring boot - 1date: 2019-11-05 18:54:52category: spring boottags: spring bootdescription: 什么是spring boot？ 启动方式、主类及目录结构、starter启动器、核心配置  Spring  Boot 的背景  得益于Spring框架的流行，它的两把利器：IOC 和 AOP，IOC帮助我">
+<meta name="twitter:title" content="spring boot - 1">
+<meta name="twitter:description" content="什么是spring boot？ 启动方式、主类及目录结构、starter启动器、核心配置">
 <meta name="twitter:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/1.png">
 
 
@@ -161,7 +161,7 @@
 
 
 
-  <title> | 橘子先生</title>
+  <title>spring boot - 1 | 橘子先生</title>
   
 
 
@@ -337,7 +337,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">spring boot - 1</h1>
         
 
         <div class="post-meta">
@@ -359,6 +359,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring-boot/" itemprop="url" rel="index">
+                    <span itemprop="name">spring boot</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -396,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5.9k
+                  5.8k
                 </span>
               
 
@@ -419,6 +441,10 @@
           
 
           
+              <div class="post-description">
+                  什么是spring boot？ 启动方式、主类及目录结构、starter启动器、核心配置
+              </div>
+          
 
         </div>
       </header>
@@ -433,8 +459,7 @@
       
 
       
-        <p>title: spring boot - 1<br>date: 2019-11-05 18:54:52<br>category: spring boot<br>tags: spring boot<br>description: 什么是spring boot？ 启动方式、主类及目录结构、starter启动器、核心配置</p>
-<p><img src="/2019/11/05/spring-boot-1/1.png" alt></p>
+        <p><img src="/2019/11/05/spring-boot-1/1.png" alt></p>
 <h3 id="Spring-Boot-的背景"><a href="#Spring-Boot-的背景" class="headerlink" title="Spring  Boot 的背景"></a>Spring  Boot 的背景</h3><p>  得益于Spring框架的流行，它的两把利器：IOC 和 AOP，IOC帮助我们管理对象的依赖关系，极大减少对象的耦合性，而AOP的切面编程可以方便使用动态代理来实现各种动态方法功能（如事务、缓存、日志等）。</p>
 <p>  而要集成Spring框架，必须要用到XML配置文件，或者注解式的 Java 代码配置。无论使用XML或者代码配置方式，都需要对相关组件的配置有足够的了解，然后在编写大量冗长的配置代码。</p>
 <h1 id="什么是Spring-Boot？"><a href="#什么是Spring-Boot？" class="headerlink" title="什么是Spring  Boot？"></a>什么是Spring  Boot？</h1><p>​    Spring boot是spring开源组织的子项目，是Srping组件一站式解决方案，简化了Spring的难度，简省了繁重的配置，提供了各种启动器，开发者能快速上手。</p>
@@ -544,6 +569,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring-boot/" rel="tag"># spring boot</a>
+          
+        </div>
       
 
       
@@ -696,7 +727,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

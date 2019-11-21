@@ -77,14 +77,16 @@
 <p>   值得一提的是：Apache Commons和Google Guava这两个实用程序库，它们是Java JDK库的有效补充。 </p>
 ]]></content>
       <categories>
-        <category>待学习</category>
+        <category>java-基础</category>
       </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
   </entry>
   <entry>
-    <title></title>
+    <title>spring boot - 1</title>
     <url>/2019/11/05/spring-boot-1/</url>
-    <content><![CDATA[<p>title: spring boot - 1<br>date: 2019-11-05 18:54:52<br>category: spring boot<br>tags: spring boot<br>description: 什么是spring boot？ 启动方式、主类及目录结构、starter启动器、核心配置</p>
-<p><img src="/2019/11/05/spring-boot-1/1.png" alt></p>
+    <content><![CDATA[<p><img src="/2019/11/05/spring-boot-1/1.png" alt></p>
 <h3 id="Spring-Boot-的背景"><a href="#Spring-Boot-的背景" class="headerlink" title="Spring  Boot 的背景"></a>Spring  Boot 的背景</h3><p>  得益于Spring框架的流行，它的两把利器：IOC 和 AOP，IOC帮助我们管理对象的依赖关系，极大减少对象的耦合性，而AOP的切面编程可以方便使用动态代理来实现各种动态方法功能（如事务、缓存、日志等）。</p>
 <p>  而要集成Spring框架，必须要用到XML配置文件，或者注解式的 Java 代码配置。无论使用XML或者代码配置方式，都需要对相关组件的配置有足够的了解，然后在编写大量冗长的配置代码。</p>
 <h1 id="什么是Spring-Boot？"><a href="#什么是Spring-Boot？" class="headerlink" title="什么是Spring  Boot？"></a>什么是Spring  Boot？</h1><p>​    Spring boot是spring开源组织的子项目，是Srping组件一站式解决方案，简化了Spring的难度，简省了繁重的配置，提供了各种启动器，开发者能快速上手。</p>
@@ -181,6 +183,12 @@
 <p><img src="/2019/11/05/spring-boot-1/31.png" alt></p>
 <p>  事件监听器接口针对不同的事件发布实际提供相应的处理方法定义，最重要的是，其方法只接收MthodMonitorEvent 参数，说明这个监听器类只负责监听器对应的事件并进行处理。有了事件和监听器，剩下的就是发布事件，然后让相应的监听器监听并处理。通常情况，我们会有一个事件发布者，它本身作为事件源，在合适的时机，将相应的事件发布给对应的事件监听器：<img src="/2019/11/05/spring-boot-1/32.png" alt></p>
 ]]></content>
+      <categories>
+        <category>spring boot</category>
+      </categories>
+      <tags>
+        <tag>spring boot</tag>
+      </tags>
   </entry>
   <entry>
     <title>简单认识markdown语法</title>
