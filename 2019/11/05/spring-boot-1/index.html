@@ -121,7 +121,21 @@
 <meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/30.png">
 <meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/31.png">
 <meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/32.png">
-<meta property="og:updated_time" content="2019-11-25T01:35:48.128Z">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/33.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/34.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/35.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/36.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/37.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/38.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/39.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/40.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/41.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/42.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/43.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/44.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/45.png">
+<meta property="og:image" content="https://dingding15yd.github.io/2019/11/05/spring-boot-1/46.png">
+<meta property="og:updated_time" content="2019-12-03T09:21:18.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring boot - 1">
 <meta name="twitter:description" content="什么是spring boot？ 启动方式、主类及目录结构、starter启动器、核心配置">
@@ -418,7 +432,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5.8k
+                  8k
                 </span>
               
 
@@ -434,7 +448,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  20
+                  28
                 </span>
               
             </div>
@@ -555,6 +569,61 @@
 <p>  事件发布之后，相应的监听器即可对该类型的事件进行处理，我们可以在方法开始执行之前发布一个 begin 事件，在方法执行结束之后发布一个end事件，相应地，事件监听器需要提供方法会对这两种情况下接收到的事件进行处理：</p>
 <p><img src="/2019/11/05/spring-boot-1/31.png" alt></p>
 <p>  事件监听器接口针对不同的事件发布实际提供相应的处理方法定义，最重要的是，其方法只接收MthodMonitorEvent 参数，说明这个监听器类只负责监听器对应的事件并进行处理。有了事件和监听器，剩下的就是发布事件，然后让相应的监听器监听并处理。通常情况，我们会有一个事件发布者，它本身作为事件源，在合适的时机，将相应的事件发布给对应的事件监听器：<img src="/2019/11/05/spring-boot-1/32.png" alt></p>
+<p>对于事件发布者(事件源)通常需要关注两点：</p>
+<p>  1.在合适的时机发布事件。此例中的methodMonitor() 方法是事件发布的源头，其在方法执行之前和结束之后两个时间点发布MethodMonitorEvent事件，每个时间点发布的事件都会传给相应的监听器进行处理。在具体实现时需要注意的是，事件发布是顺序执行，为了不影响处理性能，事件监听器的处理逻辑应尽量简单。</p>
+<p>  2.事件监听器的管理。Publisher类中提供了事件监听器的注册和移除方法，这样客户端可以根据实际情况决定是否需要注册新的监听器或者移除某个监听器。如果这里没有提供remove方法，那么注册的监听器将一直被MethodMonitorEventPublisher引用，即使已经被废弃不用了，也依然在发布者的监听器列表中，这会导致隐性的内存泄漏。</p>
+<p><strong>Spring容器内的事件监听机制</strong></p>
+<p>  Spring的ApplicationContext容器内部中的所有事件类型均继承自 org.springframework.context.ApplicationEvent，容器中的所有监听器都实现 org.spring.framework.context.ApplicationListener接口，并且以bean的形式注册在容器中。一旦在容器内发布ApplicationEvent及其子类型的事件，注册到容器的ApplciationListener就会对这些事件进行处理。</p>
+<p>  最后，如果我们的业务需要在容器内部发布事件，只需要为其注入AplicationEventPublisher依赖即可：实现ApplicationEventPublisherAware 接口或者ApplicationContextAware 接口(Aware接口相关内容请回顾上文)。</p>
+<h3 id="五、出神入化：揭秘自动配置原理"><a href="#五、出神入化：揭秘自动配置原理" class="headerlink" title="五、出神入化：揭秘自动配置原理"></a>五、出神入化：揭秘自动配置原理</h3><p>典型的Spring Boot应用的启动类一般均位于 src/main/java 根路径下，比如 MoonApplication 类：</p>
+<p><img src="/2019/11/05/spring-boot-1/33.png" alt></p>
+<p>其中 @SpringBootApplication 开启组件扫描和自动配置，而SpringApplication.run则负责启动引导程序。@SpringBootApplication是一个复合 Annotation ，它将三个有用的注解组合在一起：<img src="/2019/11/05/spring-boot-1/34.png" alt></p>
+<p>  @SpringBootConfiguration就是@Configuration，它是Spring框架的注解，标明该类是一个 JavaConfig配置类。而 @ComponentScan启用组件扫描，前文已经详细讲过，这里着重关注 @EnableAutoCofiguration。</p>
+<p>  @EnableAutoConfiguration注解表示开启Spring Boot自动配置功能，Spring Boot会根据应用的依赖、自定义的bean、classpath下有没有某个类等等因素来猜测你需要的bean，然后注册到IOC容器中。那@EnableAutoConfiguration是如何推算出你的需求？首先看下他得定义：<img src="/2019/11/05/spring-boot-1/35.png" alt></p>
+<p>  你的关注点应该在 @Import(AutoConfigurationImportSelector.class)上了，前文说过，@Import 注解用于导入类，并且将这个类作为一个bean的定义注册到容器中，并且这个类会将所有符合条件的@Configuration配置都加载到容器中，看看它的代码：<img src="/2019/11/05/spring-boot-1/36.png" alt></p>
+<p>  这个类会扫描所有的jar包，将所有符合条件的@Configuration配置类注入到容器中，何为符合条件，看看 META-INF/spring.factories 的文件内容：<img src="/2019/11/05/spring-boot-1/37.png" alt></p>
+<p>  以DataSourceAutoConfiguration为例，看看Spring Boot是如何自动配置的：<img src="/2019/11/05/spring-boot-1/38.png" alt></p>
+<p>分别说一说：</p>
+<p>  @ConditionalOnClass ({DataSource.class,EmbeddedDatabaseType.class}) ：当ClassPath中存在DataSource或者EmbeddedDatabaseType类时才启用这个配置，否则这个配置将被忽略。</p>
+<p>   @EnableConfigurationProperties(DataSourceProperties.class) ：将DataSource的默认配置类注入到IOC容器中，DataSourceproperties定义为：<img src="/2019/11/05/spring-boot-1/39.png" alt></p>
+<p>   @Import({ Registrar.class, DataSourcePoolMetadataProvidersConfiguration.class }) ：导入其他额外的配置，就以 DataSourcePoolMetadataProvidersConfiguration 为例吧：<img src="/2019/11/05/spring-boot-1/40.png" alt></p>
+<p> DataSourcePoolMetadataProvidersConfiguration是数据库连接池提供者的一个配置类，即Classpath中存在 org.apache.tomcat.jdbc.pool.DataSource.class，则使用tomcat-jdbc连接池，如果Classpath中存在 HikariDataSource.class则使用Hikari连接池。 </p>
+<p> 这里仅描述了DataSourceAutoConfiguration的冰山一角，但足以说明Spring Boot如何利用条件话配置来实现自动配置的。回顾一下， @EnableAutoConfiguration中导入了EnableAutoConfigurationImportSelector类，而这个类的 selectImports()通过SpringFactoriesLoader得到了大量的配置类，而每一个配置类则根据条件化配置来做出决策，以实现自动配置。 </p>
+<p> 整个流程很清晰，但漏了一个大问题：  </p>
+<p>  EnableAutoConfigurationImportSelector.selectImports()是何时执行的？其实这个方法会在容器启动过程中执行： AbstractApplicationContext.refresh()，更多的细节在下一小节中说明。 </p>
+<h3 id="六、启动引导：Spring-Boot应用启动的秘密"><a href="#六、启动引导：Spring-Boot应用启动的秘密" class="headerlink" title="六、启动引导：Spring Boot应用启动的秘密"></a>六、启动引导：Spring Boot应用启动的秘密</h3><p><strong>6.1 SpringApplication初始化</strong></p>
+<p>  SpringBoot整个启动流程分为两个步骤：初始化一个SpringApplication对象、执行该对象的run方法。看下SpringApplication的初始化流程，SpringApplication的构造方法中调用initialize(Object[] sources)方法，其代码如下： </p>
+<p><img src="/2019/11/05/spring-boot-1/41.png" alt></p>
+<p>  初始化流程中最重要的就是通过SpringFactoriesLoader找到 spring.factories文件中配置的 ApplicationContextInitializer和 ApplicationListener两个接口的实现类名称，以便后期构造相应的实例。 ApplicationContextInitializer的主要目的是在 ConfigurableApplicationContext做refresh之前，对ConfigurableApplicationContext实例做进一步的设置或处理。ConfigurableApplicationContext继承自ApplicationContext，其主要提供了对ApplicationContext进行设置的能力。 </p>
+<p>  实现一个ApplicationContextInitializer非常简单，因为它只有一个方法，但大多数情况下我们没有必要自定义一个ApplicationContextInitializer，即便是Spring Boot框架，它默认也只是注册了两个实现，毕竟Spring的容器已经非常成熟和稳定，你没有必要来改变它。 </p>
+<p>   而 ApplicationListener的目的就没什么好说的了，它是Spring框架对Java事件监听机制的一种框架实现，具体内容在前文Spring事件监听机制这个小节有详细讲解。这里主要说说，如果你想为Spring Boot应用添加监听器，该如何实现？ </p>
+<p>   Spring Boot提供两种方式来添加自定义监听器： </p>
+<ol>
+<li><p>通过 SpringApplication.addListeners(ApplicationListener&lt;?&gt;…listeners)或者 SpringApplication.setListeners(Collection&lt;?extendsApplicationListener&lt;?&gt;&gt;listeners)两个方法来添加一个或者多个自定义监听器 </p>
+</li>
+<li><p>既然SpringApplication的初始化流程中已经从 spring.factories中获取到 ApplicationListener的实现类，那么我们直接在自己的jar包的 META-INF/spring.factories文件中新增配置即可： <img src="/2019/11/05/spring-boot-1/42.png" alt></p>
+</li>
+</ol>
+<p><strong>6.2  Spring Boot启动流程</strong></p>
+<p>  Spring Boot应用的整个启动流程都封装在SpringApplication.run方法中，其整个流程真的是太长太长了，但本质上就是在Spring容器启动的基础上做了大量的扩展，按照这个思路来看看源码： <img src="/2019/11/05/spring-boot-1/43.png" alt></p>
+<p>① 通过SpringFactoriesLoader查找并加载所有的 SpringApplicationRunListeners，通过调用starting()方法通知      所有的SpringApplicationRunListeners：应用开始启动了。SpringApplicationRunListeners其本质上就是一个事件发布者，它在SpringBoot应用启动的不同时间点发布不同应用事件类型(ApplicationEvent)，如果有哪些事件监听者(ApplicationListener)对这些事件感兴趣，则可以接收并且处理。还记得初始化流程中，SpringApplication加载了一系列ApplicationListener吗？这个启动流程中没有发现有发布事件的代码，其实都已经在SpringApplicationRunListeners这儿实现了。 </p>
+<p>   简单的分析一下其实现流程，首先看下SpringApplicationRunListener的源码：<img src="/2019/11/05/spring-boot-1/44.png" alt> </p>
+<p>  SpringApplicationRunListener只有一个实现类： EventPublishingRunListener。①处的代码只会获取到一个EventPublishingRunListener的实例，我们来看看starting()方法的内容： <img src="/2019/11/05/spring-boot-1/45.png" alt></p>
+<p>   顺着这个逻辑，你可以在②处的 prepareEnvironment()方法的源码中找到 listeners.environmentPrepared(environment);即SpringApplicationRunListener接口的第二个方法，那不出你所料， environmentPrepared()又发布了另外一个事件 ApplicationEnvironmentPreparedEvent。接下来会发生什么，就不用我多说了吧。 </p>
+<p>② 创建并配置当前应用将要使用的 Environment，Environment用于描述应用程序当前的运行环境，其抽象了两个方面的内容：配置文件(profile)和属性(properties)，开发经验丰富的同学对这两个东西一定不会陌生：不同的环境(eg：生产环境、预发布环境)可以使用不同的配置文件，而属性则可以从配置文件、环境变量、命令行参数等来源获取。因此，当Environment准备好后，在整个应用的任何时候，都可以从Environment中获取资源。 </p>
+<p>  总结起来，②处的两句代码，主要完成以下几件事： </p>
+<ol>
+<li>判断Environment是否存在，不存在就创建（如果是web项目就创建 StandardServletEnvironment，否则创建 StandardEnvironment） </li>
+<li><p>配置Environment：配置profile以及properties </p>
+</li>
+<li><p>调用SpringApplicationRunListener的 environmentPrepared()方法，通知事件监听者：应用的Environment已经准备好 </p>
+<p>③、SpringBoot应用在启动时会输出这样的东西： <img src="/2019/11/05/spring-boot-1/46.png" alt></p>
+<p>如果想把这个东西改成自己的涂鸦，你可以研究以下Banner的实现，这个任务就留给你们吧。 </p>
+<p>④、根据是否是web项目，来创建不同的ApplicationContext容器。 </p>
+<p>⑤、创建一系列 FailureAnalyzer，创建流程依然是通过SpringFactoriesLoader获取到所有实现FailureAnalyzer接口的class，然后在创建对应的实例。FailureAnalyzer用于分析故障并提供相关诊断信息。 </p>
+<p>⑥、初始化ApplicationContext，主要完成以下工作： </p>
+</li>
+</ol>
 
       
     </div>
@@ -705,7 +774,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -783,7 +852,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot-的背景"><span class="nav-number">1.</span> <span class="nav-text">Spring  Boot 的背景</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Spring-Boot？"><span class="nav-number"></span> <span class="nav-text">什么是Spring  Boot？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot的优点"><span class="nav-number">1.</span> <span class="nav-text">Spring  Boot的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot的缺点"><span class="nav-number">2.</span> <span class="nav-text">Spring Boot的缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Boot的四大核心特性"><span class="nav-number"></span> <span class="nav-text">Spring  Boot的四大核心特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、抛砖引玉：Spring-IOC容器"><span class="nav-number">1.</span> <span class="nav-text">一、抛砖引玉：Spring IOC容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1、Spring-IOC容器"><span class="nav-number">2.</span> <span class="nav-text">1.1、Spring IOC容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2、Spring容器扩展机制"><span class="nav-number">3.</span> <span class="nav-text">1.2、Spring容器扩展机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、夯实基础：JavaConfig与常见Annotation"><span class="nav-number">4.</span> <span class="nav-text">二、夯实基础：JavaConfig与常见Annotation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1、javaconfig"><span class="nav-number">4.1.</span> <span class="nav-text">2.1、javaconfig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、-ComponentScan"><span class="nav-number">4.2.</span> <span class="nav-text">2.2、@ComponentScan</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3、-Import"><span class="nav-number">4.3.</span> <span class="nav-text">2.3、@Import</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4、-Conditional"><span class="nav-number">4.4.</span> <span class="nav-text">2.4、@Conditional</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、削铁如泥：SpringFactoriesLoader详解"><span class="nav-number">5.</span> <span class="nav-text">三、削铁如泥：SpringFactoriesLoader详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、另一件武器：Spring容器的事件监听机制"><span class="nav-number">6.</span> <span class="nav-text">四、另一件武器：Spring容器的事件监听机制</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot-的背景"><span class="nav-number">1.</span> <span class="nav-text">Spring  Boot 的背景</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Spring-Boot？"><span class="nav-number"></span> <span class="nav-text">什么是Spring  Boot？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot的优点"><span class="nav-number">1.</span> <span class="nav-text">Spring  Boot的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot的缺点"><span class="nav-number">2.</span> <span class="nav-text">Spring Boot的缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Boot的四大核心特性"><span class="nav-number"></span> <span class="nav-text">Spring  Boot的四大核心特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、抛砖引玉：Spring-IOC容器"><span class="nav-number">1.</span> <span class="nav-text">一、抛砖引玉：Spring IOC容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1、Spring-IOC容器"><span class="nav-number">2.</span> <span class="nav-text">1.1、Spring IOC容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2、Spring容器扩展机制"><span class="nav-number">3.</span> <span class="nav-text">1.2、Spring容器扩展机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、夯实基础：JavaConfig与常见Annotation"><span class="nav-number">4.</span> <span class="nav-text">二、夯实基础：JavaConfig与常见Annotation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1、javaconfig"><span class="nav-number">4.1.</span> <span class="nav-text">2.1、javaconfig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、-ComponentScan"><span class="nav-number">4.2.</span> <span class="nav-text">2.2、@ComponentScan</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3、-Import"><span class="nav-number">4.3.</span> <span class="nav-text">2.3、@Import</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4、-Conditional"><span class="nav-number">4.4.</span> <span class="nav-text">2.4、@Conditional</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、削铁如泥：SpringFactoriesLoader详解"><span class="nav-number">5.</span> <span class="nav-text">三、削铁如泥：SpringFactoriesLoader详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、另一件武器：Spring容器的事件监听机制"><span class="nav-number">6.</span> <span class="nav-text">四、另一件武器：Spring容器的事件监听机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、出神入化：揭秘自动配置原理"><span class="nav-number">7.</span> <span class="nav-text">五、出神入化：揭秘自动配置原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、启动引导：Spring-Boot应用启动的秘密"><span class="nav-number">8.</span> <span class="nav-text">六、启动引导：Spring Boot应用启动的秘密</span></a></li></ol></li></div>
             
 
           </div>
