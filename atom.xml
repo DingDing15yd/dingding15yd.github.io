@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dingding15yd.github.io/"/>
-  <updated>2019-12-12T06:31:59.511Z</updated>
+  <updated>2019-12-31T00:57:09.881Z</updated>
   <id>https://dingding15yd.github.io/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>中文全角和半角的缘由？</title>
+    <link href="https://dingding15yd.github.io/2019/12/30/%E4%B8%AD%E6%96%87%E5%85%A8%E8%A7%92%E5%92%8C%E5%8D%8A%E8%A7%92%E7%9A%84%E7%BC%98%E7%94%B1%EF%BC%9F/"/>
+    <id>https://dingding15yd.github.io/2019/12/30/中文全角和半角的缘由？/</id>
+    <published>2019-12-30T04:33:44.000Z</published>
+    <updated>2019-12-31T00:57:09.881Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="中文全角和半角的区别"><a href="#中文全角和半角的区别" class="headerlink" title="中文全角和半角的区别"></a>中文全角和半角的区别</h1><p><strong>符号冲突是主要原因</strong></p><p>​    有些数字或符号是有冲突的，比如英文逗号,与中文逗号，用眼睛就可以看出长度与大小是不一样的。当在键盘上输入逗号时，中文输入法不确定你想要的是哪种逗号(中/英)，所以就提供了全角半角模式，英文半角输入英文逗号，其他模式就是中文逗号，这样，我们用一种输入法就能打出两种符号，而不用切换成其他输入法。</p><p>​    更细致的原因要从以下各点说起：</p><p><strong>1.二进制</strong></p><p>​    计算机普遍遵循冯诺依曼结构体系，它规定了计算机内部以二进制为主要数制(这和电路有关)，所以计算机只认识二进制的0或1.其他符号比如十进制的[2-9]，字母[a-zA-Z]，标点符号，中文等等是不认识的，那么，当我们说’a’的时候，它是怎么理解的呢？</p><p><strong>2.编码表</strong></p><p>​    既然计算机只认识01符号，那我们就可以建立一套“映射系统”，比如：</p><p>​    a &lt; – &gt; 00000001</p><p>​    b &lt; – &gt; 00000010</p><p>​    c &lt; – &gt; 00000011</p><p>​    当我们说“a”的时候，计算机就理解为“00000001”，即一个符号，用一串唯一的二进制表示，这套‘映射系统’就称为编码表。</p><p><strong>3.ASCII编码表</strong></p><p>​    因为早期的计算机只在发达的欧美国家使用，所以这套“映射系统”是根据英文系统规则设计的，叫ASCII表，规定用8位长度的二进制表示，最多可以表示 2^8 = 256 个字符。ASCII表涵盖了英文字母，数字，和常用的英文符号，比如“,.+-”等。</p><p>​    可普通汉字就有6万多个，很明显8位的ASCII编码方案满足不了中文系统的要求，比如中文“啊”，就无法用ASCII表示。</p><p><strong>4.中文编码表</strong></p><p>​    由上我们知道，只要再设计一套更大的“映射系统“就可以解决问题了，比如</p><p>​    啊 = 00000000 00000001</p><p>​    哦 = 00000000 00000010</p><p>​    即使用16位二进制（两字节）表示一个汉字，最多可表示 2^16 = 65536 个。</p><p>​    早期中午系统设计的时候，使用GB2312标准，但这套标准有部分的汉字，符号，少数民族用语是没有映射过去的，比如在GB2312中就打不出”镕“字，所以往后就出了编码范围更大的编码表，如GBK、GB18030。这些编码表只有一个区别，就是能表示的汉字或符号范围越来越大了，但相应的，需要映射的二进制位数也越来越大了，即汉字可能需要用2-4位字节(16-32位二进制)表示，存储的成本增加了。</p><p><strong>5.全角和半角</strong></p><p>​    综上，我们知道</p><pre><code>1. 计算机只认识二进制01，所有的字形符号都是通过编码表（映射系统）翻译实现的 2. 在英文系统的编码里，有用一字节表示的标点符号，如英文逗号”，“ 3. 在中文系统的编码表里，有用N(1-4)字节表示的标点符号，如中文逗号”，“</code></pre><p>   语义上我们统称为逗号，但计算机实际表现形式是不同的<br>   英文逗号”,”   在ASCII规则下是 00101100，一字节长，屏幕打印宽度是一个宽度<br>   中文逗号”，” 在GBK规则下是  10100011 10101100，两字节长，屏幕打印宽度是两个宽度</p><p>   半角就是指 ASCII 编码表以内的标点符号，它们都是占一个字节，一个打印宽度的</p><p> 举个栗子🌰：|为分割线 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">中文，１２３４，ａｂｃｄ| 全角  </span><br><span class="line">中文，1234，abcd|半角</span><br></pre></td></tr></table></figure><p> 附：中引文对应键位下的字母和符号 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">·1234567890-=【】、；‘’，。、qwertyuiop~！@#￥%……&amp;*（）——+&#123;&#125;|：“”《》？ </span><br><span class="line">`1234567890-=[]\;&apos;,./qwertyuiop~!@#$%^&amp;*()_+&#123;&#125;|:&quot;&lt;&gt;?</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      举个栗子🌰：|为分割线 中文，１２３４，ａｂｃｄ| 全角 中文，1234，abcd|半角
+    
+    </summary>
+    
+      <category term="沧海拾遗" scheme="https://dingding15yd.github.io/categories/%E6%B2%A7%E6%B5%B7%E6%8B%BE%E9%81%97/"/>
+    
+    
+      <category term="java" scheme="https://dingding15yd.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>找准定位，深耕Java核心技术</title>
+    <link href="https://dingding15yd.github.io/2019/12/30/%E6%89%BE%E5%87%86%E5%AE%9A%E4%BD%8D%EF%BC%8C%E6%B7%B1%E8%80%95Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/"/>
+    <id>https://dingding15yd.github.io/2019/12/30/找准定位，深耕Java核心技术/</id>
+    <published>2019-12-30T00:50:28.000Z</published>
+    <updated>2019-12-31T00:54:13.326Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="世界之大，专精、深耕"><a href="#世界之大，专精、深耕" class="headerlink" title="世界之大，专精、深耕"></a>世界之大，专精、深耕</h1><p>切勿在当下信息爆炸的时代左瞻右顾，找准自己的道路，一往无前，没有达到相应的境界，切勿好高骛远，不切实际。</p><p>人生的三大境界：</p><p>​                <img src="/2019/12/30/找准定位，深耕Java核心技术/1.jpg" alt></p><p>第一境界：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. 昨夜西风凋碧树 。独上高楼，望尽天涯路。</span><br></pre></td></tr></table></figure><p>​        迷茫的阶段:人生初期，三观没有成型，面对很多问题，会表现出迷茫，不知道该如何选择。初入社会或职场，缺少目标和方向。 </p><p>第二境界：</p><pre><code>2. 衣带渐宽终不悔，为伊消得人憔悴。</code></pre><p>​       奋斗的阶段:目标确立，接下来就是一种实施，努力，或是执着。是已经做出决定后，所表现的奋斗情形 。</p><p>第三境界：</p><pre><code>3. 众里寻他千百度，慕然回首，那人却在灯火阑珊处。</code></pre><p>​        辉煌的阶段:立志追逐的，在足够的积累后，量变成为质变，不经意间已追逐到了。 </p><p>SpringBoot</p><p>SpringCloud</p><p>NIO、Netty</p><p>JVM、GC</p><p>RabbitMQ</p><p>Redis</p><p>Shrio</p><p>GIT</p><p>Elaticsearch</p><p>ShardingJDBC</p><p>算法</p><p>数据中台(了解)</p>]]></content>
+    
+    <summary type="html">
+    
+      一往无前虎山行，拨开云雾见光明。
+    
+    </summary>
+    
+      <category term="学习路线" scheme="https://dingding15yd.github.io/categories/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
+    
+    
+      <category term="java" scheme="https://dingding15yd.github.io/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>java 8需要掌握的新特性</title>
