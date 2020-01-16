@@ -251,18 +251,8 @@
 <p>第三境界：</p>
 <pre><code>3. 众里寻他千百度，慕然回首，那人却在灯火阑珊处。
 </code></pre><p>​        辉煌的阶段:立志追逐的，在足够的积累后，量变成为质变，不经意间已追逐到了。 </p>
-<p>SpringBoot</p>
-<p>SpringCloud</p>
-<p>NIO、Netty</p>
-<p>JVM、GC</p>
-<p>RabbitMQ</p>
-<p>Redis</p>
-<p>Shrio</p>
-<p>GIT</p>
-<p>Elaticsearch</p>
-<p>ShardingJDBC</p>
-<p>算法</p>
-<p>数据中台(了解)</p>
+<h3 id="技术点"><a href="#技术点" class="headerlink" title="技术点"></a>技术点</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SpringBoot</span><br><span class="line">RabbitMQ</span><br><span class="line">Shrio</span><br><span class="line">Redis</span><br><span class="line">Elaticsearch</span><br><span class="line">ShardingJDBC</span><br><span class="line">GIT</span><br><span class="line">算法</span><br><span class="line">数据中台(了解)</span><br><span class="line">JVM、GC</span><br><span class="line">NIO、Netty</span><br><span class="line">SpringCloud</span><br></pre></td></tr></table></figure>
+<h3 id="推荐书籍"><a href="#推荐书籍" class="headerlink" title="推荐书籍"></a>推荐书籍</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.《小狗钱钱》（博多·费舍尔）</span><br><span class="line">2.《富爸爸穷爸爸》（罗伯特·清崎 / 莎伦·莱希特）</span><br><span class="line">3.《财务自由之路》（博多·费舍尔）</span><br><span class="line">4.《30岁前的每一天》（水湄物语）</span><br><span class="line">5.《穷查理宝典》（查理·芒格）</span><br><span class="line">6.干法</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>学习路线</category>
